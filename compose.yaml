@@ -38,7 +38,7 @@ services:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
 
-  ###> doctrine/doctrine-bundle ###
+###> doctrine/doctrine-bundle ###
   database:
     image: mysql:${MYSQL_VERSION:-8}
     environment:
@@ -57,6 +57,19 @@ services:
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/mysql:rw
 ###< doctrine/doctrine-bundle ###
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION:-latest}
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+    ports:
+      - target: ${PHPMYADMIN_PORT:-8080}
+        published: ${PHPMYADMIN_PORT:-8080}
+        protocol: tcp
+    depends_on:
+      database:
+        condition: service_healthy
 
 volumes:
   caddy_data:
