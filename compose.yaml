@@ -74,6 +74,7 @@ services:
 volumes:
   caddy_data:
   caddy_config:
+    # Add a volume to persist database data
   database_data:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
