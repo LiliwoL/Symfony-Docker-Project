@@ -10,6 +10,40 @@ COPY --link \
 /usr/local/bin/symfony /usr/local/bin/symfony
 ```
 
+- frankenphp/docker-entrypoint.sh
+```
+# Add Symfony ORM pack if a database is configured
+composer req symfony/orm-pack
+
+# Add Symfony Maker bundle for development environment
+composer req --dev symfony/maker-bundle
+```
+
+.env
+DATABASE_URL=mysql://${MYSQL_USER:-app}:${MYSQL_PASSWORD:-!ChangeMe!}@database:3306/${MYSQL_DATABASE:-app}?serverVersion=${MYSQL_VERSION:-8}&charset=${MYSQL_CHARSET:-utf8mb4}
+
+# Lancement de l'application
+
+Création des conteneurs Docker
+```
+docker compose build --pull --no-cache
+
+lancement de l'application Symfony:
+
+```
+docker compose up --wait
+```
+
+Tester le setup avec la base de données MySQL:
+
+```
+
+Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
+
+# Eteindre l'application
+
+Run `docker compose down --remove-orphans` to stop the Docker containers.
+
 
 A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework,
 with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!
