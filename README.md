@@ -1,5 +1,16 @@
 # Symfony Docker
 
+Modifications apportées:
+
+- Dockerfile
+```
+# Add Symfony CLI
+COPY --link \
+--from=ghcr.io/symfony-cli/symfony-cli:latest \
+/usr/local/bin/symfony /usr/local/bin/symfony
+```
+
+
 A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework,
 with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!
 
