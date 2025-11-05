@@ -74,5 +74,6 @@ services:
 volumes:
   caddy_data:
   caddy_config:
+  database_data:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
