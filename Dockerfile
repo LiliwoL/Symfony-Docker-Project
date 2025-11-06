@@ -29,9 +29,6 @@ RUN set -eux; \
 		intl \
 		opcache \
 		zip \
-        # PDO extensions
-        pdo_sqlite \
-        pdo_mysql \
 	;
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
@@ -41,9 +38,6 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV MERCURE_TRANSPORT_URL=bolt:///data/mercure.db
 
 ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
-
-RUN docker-php-ext-install pdo pdo_mysql
-RUN docker-php-ext-enable pdo pdo_mysql
 
 ###> recipes ###
 ###< recipes ###
