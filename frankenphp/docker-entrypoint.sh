@@ -27,10 +27,10 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 	fi
 
 	# Add Symfony ORM pack if a database is configured
-	composer req symfony/orm-pack
+	composer req symfony/orm-pack --no-interaction
 
 	# Add Symfony Maker bundle for development environment
-	composer req --dev symfony/maker-bundle
+	composer req --dev symfony/maker-bundle --no-interaction
 
 	# Display information about the current project
 	# Or about an error in project initialization
