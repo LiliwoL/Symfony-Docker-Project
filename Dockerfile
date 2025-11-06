@@ -29,6 +29,9 @@ RUN set -eux; \
 		intl \
 		opcache \
 		zip \
+        # PDO extensions
+        pdo_sqlite \
+        pdo_mysql \
 	;
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
@@ -41,7 +44,7 @@ ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
 
 ###> recipes ###
 ###> doctrine/doctrine-bundle ###
-RUN install-php-extensions pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 ###< doctrine/doctrine-bundle ###
 ###< recipes ###
 
