@@ -42,10 +42,10 @@ ENV MERCURE_TRANSPORT_URL=bolt:///data/mercure.db
 
 ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
 
-###> recipes ###
-###> doctrine/doctrine-bundle ###
 RUN docker-php-ext-install pdo pdo_mysql
-###< doctrine/doctrine-bundle ###
+RUN docker-php-ext-enable pdo pdo_mysql
+
+###> recipes ###
 ###< recipes ###
 
 COPY --link frankenphp/conf.d/10-app.ini $PHP_INI_DIR/app.conf.d/
