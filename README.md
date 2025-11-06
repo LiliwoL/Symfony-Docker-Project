@@ -22,20 +22,26 @@ composer req --dev symfony/maker-bundle
 .env
 DATABASE_URL=mysql://${MYSQL_USER:-app}:${MYSQL_PASSWORD:-!ChangeMe!}@database:3306/${MYSQL_DATABASE:-app}?serverVersion=${MYSQL_VERSION:-8}&charset=${MYSQL_CHARSET:-utf8mb4}
 
+Il est impératif de modifier les variables d'environnement MYSQL_USER, MYSQL_PASSWORD et MYSQL_DATABASE pour sécuriser l'accès à la base de données.
+
+
 # Lancement de l'application
 
 Création des conteneurs Docker
-```
+```bash
 docker compose build --pull --no-cache
+```
 
 lancement de l'application Symfony:
 
-```
+```bash
 docker compose up --wait
 ```
 
 Tester le setup avec la base de données MySQL:
 
+```
+docker compose exec php bin/console dbal:run-sql -q "SELECT 1" && echo "OK" || echo "Connection is not working"
 ```
 
 Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
