@@ -20,17 +20,17 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 			echo 'To finish the installation please press Ctrl+C to stop Docker Compose and run: docker compose up --build --wait'
 			sleep infinity
 		fi
+
+		# Add Symfony ORM pack if a database is configured
+		composer req symfony/orm-pack
+
+		# Add Symfony Maker bundle for development environment
+		composer req --dev symfony/maker-bundle
 	fi
 
 	if [ -z "$(ls -A 'vendor/' 2>/dev/null)" ]; then
 		composer install --prefer-dist --no-progress --no-interaction
 	fi
-
-	# Add Symfony ORM pack if a database is configured
-	composer req symfony/orm-pack --no-interaction
-
-	# Add Symfony Maker bundle for development environment
-	composer req --dev symfony/maker-bundle --no-interaction
 
 	# Display information about the current project
 	# Or about an error in project initialization
