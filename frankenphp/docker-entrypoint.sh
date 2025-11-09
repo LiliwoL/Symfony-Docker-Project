@@ -6,6 +6,7 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 	# After the installation, the following block can be deleted
 	if [ ! -f composer.json ]; then
 		rm -Rf tmp/
+
 		# Create a new Website Skeleteon Symfony project in a temporary directory
 		composer create-project "symfony/website-skeleton $SYMFONY_VERSION" tmp --stability="$STABILITY" --prefer-dist --no-progress --no-interaction --no-install
 
