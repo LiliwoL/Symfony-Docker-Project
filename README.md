@@ -10,14 +10,6 @@ COPY --link \
 /usr/local/bin/symfony /usr/local/bin/symfony
 ```
 
-- frankenphp/docker-entrypoint.sh
-```bash
-# Add Symfony ORM pack if a database is configured
-composer req symfony/orm-pack
-
-# Add Symfony Maker bundle for development environment
-composer req --dev symfony/maker-bundle
-```
 
 ---
 

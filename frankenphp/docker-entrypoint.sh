@@ -7,8 +7,8 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 	if [ ! -f composer.json ]; then
 		rm -Rf tmp/
 
-		# Create a new Website Skeleteon Symfony project in a temporary directory
-		composer create-project "symfony/website-skeleton $SYMFONY_VERSION" tmp --stability="$STABILITY" --prefer-dist --no-progress --no-interaction --no-install
+		# Create a new Skeleton Symfony project in a temporary directory
+		composer create-project "symfony/skeleton $SYMFONY_VERSION" tmp --stability="$STABILITY" --prefer-dist --no-progress --no-interaction --no-install
 
 		cd tmp
 		cp -Rp . ..
@@ -27,7 +27,7 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 		#composer req symfony/orm-pack
 
 		# Add Symfony Maker bundle for development environment
-		composer req --dev symfony/maker-bundle
+		#composer req --dev symfony/maker-bundle
 	fi
 
 	if [ -z "$(ls -A 'vendor/' 2>/dev/null)" ]; then
