@@ -10,15 +10,6 @@ COPY --link \
 /usr/local/bin/symfony /usr/local/bin/symfony
 ```
 
-- frankenphp/docker-entrypoint.sh
-```bash
-# Add Symfony ORM pack if a database is configured
-composer req symfony/orm-pack
-
-# Add Symfony Maker bundle for development environment
-composer req --dev symfony/maker-bundle
-```
-
 ---
 
 # Lancement de l'application
@@ -39,24 +30,12 @@ Lancement des containers Docker
 docker compose up --wait
 ```
 
-A la première exécution, il est nécessaire d'initialiser la base de données:
-
-```dotenv
-DATABASE_URL=mysql://${MYSQL_USER:-app}:${MYSQL_PASSWORD:-!ChangeMe!}@database:3306/${MYSQL_DATABASE:-app}?serverVersion=${MYSQL_VERSION:-8}&charset=${MYSQL_CHARSET:-utf8mb4}
-```
-
-Tester le setup avec la base de données MySQL:
-
-```
-docker compose exec php bin/console dbal:run-sql -q "SELECT 1" && echo "OK" || echo "Connection is not working"
-```
 
 Accès aux containers:
 - Symfony https://localhost
   - Vous devrez valider le certificat TLS auto-signé. Pour que ça soit permanent, ajoutez-le aux certificats de confiance de votre OS.
   - https://stackoverflow.com/a/15076602/1352334
-- PhpMyAdmin http://localhost:8080
-- Adminer http://localhost:8081
+
 
 # Eteindre l'application
 
