@@ -22,12 +22,12 @@ git clone
 
 Création des conteneurs Docker
 ```bash
-docker compose build --pull --no-cache
+docker-compose build --pull --no-cache
 ```
 
 Lancement des containers Docker
 ```bash
-docker compose up --wait
+docker-compose up --wait
 ```
 
 
@@ -39,5 +39,5 @@ Accès aux containers:
 
 # Eteindre l'application
 
-Run `docker compose down --remove-orphans` to stop the Docker containers.
+Run `docker-compose down --remove-orphans` to stop the Docker containers.
 
