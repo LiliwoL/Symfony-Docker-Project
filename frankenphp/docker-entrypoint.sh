@@ -15,19 +15,13 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 		cd -
 		rm -Rf tmp/
 
-		composer require "php:>=$PHP_VERSION" runtime/frankenphp-symfony
+		composer require "php:>=$PHP_VERSION"
 		composer config --json extra.symfony.docker 'true'
 
 		if grep -q ^DATABASE_URL= .env; then
 			echo 'To finish the installation please press Ctrl+C to stop Docker Compose and run: docker compose up --build --wait'
 			sleep infinity
 		fi
-
-		# Add Symfony ORM pack if a database is configured
-		#composer req symfony/orm-pack
-
-		# Add Symfony Maker bundle for development environment
-		#composer req --dev symfony/maker-bundle
 	fi
 
 	if [ -z "$(ls -A 'vendor/' 2>/dev/null)" ]; then
